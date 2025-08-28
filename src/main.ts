@@ -1,5 +1,7 @@
 import { Livro } from "./models/concretas/Livro.js";
 import { Revista } from "./models/concretas/Revista.js";
+import { CD } from "./models/concretas/CD.js";
+import { DVD } from "./models/concretas/DVD.js";
 
 console.log("--- Sistema de Biblioteca ---");
 
@@ -24,9 +26,31 @@ const revistaJS = new Revista(
   "1"
 );
 
+const cdMusical = new CD(
+  "Album de Rock",
+  "Banda Famosa",
+  12,
+  2005,
+  60,
+  "C3",
+  "2"
+);
+
+const dvdFilme = new DVD(
+  "Uma Aventura no Espaço",
+  "Diretor Conhecido",
+  "Ficção Científica",
+  2018,
+  120,
+  "C3",
+  "4"
+);
+
 // Usando os métodos
 livroTS.getDetalhes();
 revistaJS.getDetalhes();
+cdMusical.getDetalhes();
+dvdFilme.getDetalhes();
 
 console.log("\n--- Simulação de Empréstimos ---");
 livroTS.emprestar();
