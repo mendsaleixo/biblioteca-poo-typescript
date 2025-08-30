@@ -1,3 +1,5 @@
+import { Biblioteca } from "./models/Biblioteca.js";
+
 import { Livro } from "./models/concretas/Livro.js";
 import { Revista } from "./models/concretas/Revista.js";
 import { CD } from "./models/concretas/CD.js";
@@ -5,7 +7,8 @@ import { DVD } from "./models/concretas/DVD.js";
 
 console.log("--- Sistema de Biblioteca ---");
 
-// Criando instâncias (objetos reais) das nossas classes
+const minhaBiblioteca = new Biblioteca();
+
 const livroTS = new Livro(
   "L001",
   "TypeScript: Guia Definitivo",
@@ -15,7 +18,6 @@ const livroTS = new Livro(
   "A1",
   "3"
 );
-
 const revistaJS = new Revista(
   "R001",
   "JavaScript Weekly",
@@ -25,7 +27,6 @@ const revistaJS = new Revista(
   "B2",
   "1"
 );
-
 const cdMusical = new CD(
   "Album de Rock",
   "Banda Famosa",
@@ -35,7 +36,6 @@ const cdMusical = new CD(
   "C3",
   "2"
 );
-
 const dvdFilme = new DVD(
   "Uma Aventura no Espaço",
   "Diretor Conhecido",
@@ -46,13 +46,16 @@ const dvdFilme = new DVD(
   "4"
 );
 
-// Usando os métodos
-livroTS.getDetalhes();
-revistaJS.getDetalhes();
-cdMusical.getDetalhes();
-dvdFilme.getDetalhes();
+minhaBiblioteca.adicionarItem(livroTS);
+minhaBiblioteca.adicionarItem(revistaJS);
+minhaBiblioteca.adicionarItem(cdMusical);
+minhaBiblioteca.adicionarItem(dvdFilme);
+
+minhaBiblioteca.listarAcervo();
 
 console.log("\n--- Simulação de Empréstimos ---");
 livroTS.emprestar();
 livroTS.emprestar();
 livroTS.devolver();
+
+livroTS.getDetalhes();
