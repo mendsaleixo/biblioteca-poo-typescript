@@ -1,0 +1,73 @@
+# Projeto: Biblioteca Online com TypeScript e POO
+
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+
+## 🎯 Objetivo Principal
+
+Este projeto é uma aplicação de console que simula um sistema de gerenciamento de uma biblioteca. O objetivo principal não foi criar uma interface gráfica, mas sim focar puramente na **arquitetura do código-fonte** e na **modelagem de um sistema complexo** utilizando os pilares da **Programação Orientada a Objetos (POO)** com TypeScript.
+
+Serve como um estudo de caso prático para demonstrar o domínio de conceitos como herança, polimorfismo, classes abstratas, interfaces e generics em um ambiente TypeScript moderno, configurado com ES Modules.
+
+## 🏛️ Arquitetura e Padrões de POO Aplicados
+
+A estrutura do projeto foi planejada para ser escalável e organizada, aplicando os seguintes conceitos de POO:
+
+- **Classes Abstratas (`abstract class`)**:
+
+  - `ItemAcervo`: Serve como o "DNA" base para todos os itens da biblioteca. Ela compartilha código comum (como os métodos `emprestar()` e `devolver()`) e define um contrato (`abstract getDetalhes()`) que todas as subclasses são obrigadas a implementar.
+  - `Publicacao` e `Midia`: Classes abstratas intermediárias que especializam a herança, agrupando itens com características em comum (ex: `Publicacao` para `Livro` e `Revista`).
+
+- **Herança (`extends`)**:
+
+  - Foi utilizada para criar uma hierarquia clara e reutilizar código. A estrutura é:
+    - `Livro` e `Revista` herdam de `Publicacao`.
+    - `CD` e `DVD` herdam de `Midia`.
+    - `Publicacao` e `Midia` herdam de `ItemAcervo`.
+
+- **Interfaces (`implements`)**:
+
+  - `ILocalizavel`: Um contrato simples que garante que qualquer classe que o implemente terá uma propriedade `localizacao`. Isso demonstra como adicionar "capacidades" a classes sem usar herança.
+
+- **Polimorfismo**:
+
+  - A classe `Biblioteca` armazena todos os itens em um único array (`ItemAcervo[]`). Ao chamar o método `getDetalhes()` em um loop, cada objeto (`Livro`, `Revista`, `CD`, etc.) responde de sua maneira única, executando sua própria implementação do método.
+
+- **Encapsulamento (`private` / `public`)**:
+
+  - Propriedades como `autor` em `Livro` ou o `acervo` na `Biblioteca` foram definidas como `private` para proteger o estado interno dos objetos e garantir que a interação seja feita através de métodos públicos, de forma controlada.
+
+- **Membros Estáticos (`static`)**:
+
+  - Utilizado na classe `Livro` para criar um `contadorDeLivros`, demonstrando uma propriedade que pertence à classe em si, e não a cada instância individual.
+
+- **Modularização (ES Modules)**:
+  - O código foi organizado em módulos, com cada classe e interface em seu próprio arquivo, utilizando `import` e `export` para gerenciar as dependências de forma limpa e escalável.
+
+## 🛠️ Tecnologias Utilizadas
+
+- **TypeScript**: Para adicionar tipagem estática, segurança e funcionalidades de POO avançadas ao JavaScript.
+- **Node.js**: Ambiente para executar o código TypeScript no lado do servidor/terminal.
+- **ts-node**: Ferramenta de desenvolvimento para executar scripts TypeScript diretamente.
+
+## 🚀 Como Executar o Projeto
+
+1.  **Clone o repositório:**
+
+    ```bash
+    git clone [https://github.com/mendsaleixo/biblioteca-poo-typescript.git](https://github.com/mendsaleixo/biblioteca-poo-typescript.git)
+    cd biblioteca-poo-typescript
+    ```
+
+2.  **Instale as dependências:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Execute a simulação principal:**
+    O comando `start` irá primeiro compilar todo o projeto para a pasta `/dist` e depois executar o arquivo principal.
+    ```bash
+    npm start
+    ```
+    Você verá a saída das operações da biblioteca no seu terminal.
